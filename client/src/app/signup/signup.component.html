@@ -1,11 +1,24 @@
 
     <div class="wrapper clearfix">
       <div class="background">
-        <div class="tada">
-<img class="profile-image" src="https://lh3.google.com/u/0/d/113sTkvU9Ci7VWQzUX83Xc-qe4TMceGNv=w2560-h1138-iv1" alt="">
-        </div>
-        <div class="input-container">
-          <button type="button" name="button" (click)="goBack()">Back to Login</button>
-        </div>
+        <!-- <form class="input-container" (submit)="signUp($event, username.value, firstname.value, lastname.value, city.value, email.value, password.value)"> -->
+        <form class="input-container" (submit)="signUp($event, username.value, firstname.value, lastname.value, city.value, email.value, password.value)">
+          <h1>Username</h1>
+          <input #username type="text" name="" value="" required>
+          <h1>First Name</h1>
+          <input #firstname type="text" name="" value="" required>
+          <h1>Last Name</h1>
+          <input #lastname type="text" name="" value="" required>
+          <h1>City</h1>
+          <input #city type="text" name="" value="" required>
+          <h1>E-mail</h1>
+          <input #email type="email" name="" value="" required>
+          <h1>Password</h1>
+          <input #password type="password" name="#password" value="" required>
+          <button type="submit" name="" >SIGN UP</button>
+        </form>
+        <button type="button" name="button" routerLink="/">Back to Login</button>
       </div>
     </div>
+
+<!-- (click)= -->
