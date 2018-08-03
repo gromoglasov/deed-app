@@ -4,12 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CommunityComponent } from './community/community.component';
-
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
   { path: "profile", component: ProfileComponent },
-  { path: "community/:group", component: CommunityComponent }
+  { path: "community/:group", component: CommunityComponent },
+  { path: "signup", component: SignupComponent },
 ];  // { path: 'statistics', component: StatisticsComponent}
 
 

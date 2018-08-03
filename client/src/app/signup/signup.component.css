@@ -1,0 +1,159 @@
+/* FONT */
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:200i,300,400,500,600,700');
+
+* {
+  box-sizing: border-box;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+.clearfix {
+  /* display: inline-block; */
+}
+
+* html .clearfix {
+  height: 1%;
+}
+
+.clearfix {
+  display: block;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 100vw;
+  background-size: cover;
+  height: 100vh;
+}
+
+.background {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  float: left;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://lh3.google.com/u/0/d/1GxpT0OSyZS1H1xTmYrXKZakEPH-dAyIf=w2560-h1260-iv1");
+  background-size: cover;
+  z-index: 2;
+  position: relative;
+  overflow: hidden;
+}
+
+.tada {
+
+
+}
+
+.background::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-size: cover;
+  opacity: 0.3;
+  background: black;
+}
+
+.button-container {
+  width: 100%;
+  height: 70px;
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.button-icon {
+  float: left;
+  width: 50%;
+  height: 70px;
+  position: relative;
+}
+
+.button-icon i {
+  margin: 20px;
+  position: relative;
+  /* top: 50%;
+  left: 50%; */
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: white;
+}
+
+.profile-image {
+  display: block;
+  width: 200px;
+  z-index: 2;
+  object-fit: cover;
+  object-position: center;
+}
+
+.input-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+
+.input-container input {
+  border: none;
+  border-bottom: 1px solid white;
+  color: white;
+  background: none;
+  height: 20px;
+  width: 100%;
+  font-size: 14px;
+  text-align: center;
+}
+
+.input-container h1 {
+  font-family: Montserrat;
+  font-weight: 200;
+  text-align: center;
+  color: white;
+  padding: 0;
+  margin: 10px 0px 10px 0px;
+}
+
+.input-container p {
+  font-family: Montserrat;
+  font-weight: 200;
+  text-align: center;
+  color: white;
+  font-size: 9px;
+  margin-top: 20px;
+}
+
+.input-container input[name="button"] {
+  border: 1px solid white;
+  border-radius: 20px;
+  background: none;
+  color: white;
+  margin-top: 30px;
+  width: 150px;
+  height: 40px;
+}
+
+button {
+    border: 1px solid white;
+    border-radius: 20px;
+    background: none;
+    color: white;
+    margin-top: 30px;
+    position: relative;
+    width: 150px;
+    height: 40px;
+    z-index: 2;
+}

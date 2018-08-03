@@ -1,3 +1,24 @@
-<p>
-  test4!
-</p>
+
+    <div class="wrapper clearfix">
+      <div class="background">
+        <!-- <form class="input-container" (submit)="signUp($event, username.value, firstname.value, lastname.value, city.value, email.value, password.value)"> -->
+        <form class="input-container" (submit)="signUp($event, username.value, firstname.value, lastname.value, city.value, email.value, password.value)">
+          <h1>Username</h1>
+          <input #username type="text" name="" value="" required>
+          <h1>First Name</h1>
+          <input #firstname type="text" name="" value="" required>
+          <h1>Last Name</h1>
+          <input #lastname type="text" name="" value="" required>
+          <h1>City</h1>
+          <input #city type="text" name="" value="" required>
+          <h1>E-mail</h1>
+          <input #email type="email" name="" value="" required>
+          <h1>Password</h1>
+          <input #password type="password" name="#password" value="" required>
+          <button type="submit" name="" >SIGN UP</button>
+        </form>
+        <button type="button" name="button" routerLink="/">Back to Login</button>
+      </div>
+    </div>
+
+<!-- (click)= -->
