@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-signup',
@@ -6,8 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  
+  goBack(): void {
+    this.location.back();
+  }
 
-  constructor() { }
+  constructor(
+    private location: Location,
+
+  ) {
+  }
 
   ngOnInit() {
   }
