@@ -4,14 +4,14 @@
         <div class="tada">
 <img class="profile-image" src="https://lh3.google.com/u/0/d/113sTkvU9Ci7VWQzUX83Xc-qe4TMceGNv=w2560-h1138-iv1" alt="">
         </div>
-        <form class="input-container">
+        <form class="input-container" (submit)="login($event, username.value)">
           <h1>Username</h1>
-          <input type="text" name="" value="" required>
+          <input #username type="text" name="" value="" required>
           <h1>Password</h1>
-          <input type="password" name="" value="" required>
-          <input type="submit" name="button" value="Login" routerLink="/profile">
+          <input #password type="password" name="" value="" required>
+          <input type="submit" name="button" value="Login">
         </form>
-        <button type="button" name="button" routerLink="/signup">SIGN UP</button>
+        <button type="button" name="button">SIGN UP</button>
         <p>Login with facebook</p>
       </div>
     </div>
