@@ -9,6 +9,7 @@ import { Location } from '@angular/common';
 import { Apollo } from "apollo-angular";
 import gql from 'graphql-tag';
 import { Subscription } from 'apollo-client/util/Observable';
+import { LoginService } from '../login.service';
 
 function createNewGroup (group, type, initKarma) {
   return gql`
@@ -57,7 +58,6 @@ export class ProfileComponent implements OnInit {
   }
 
   status: boolean = false;
-
   showForm() {
     this.status = !this.status;
   }
@@ -116,22 +116,25 @@ updateKarma(user, group, karma) {
   private querySubscription: Subscription;
 
   constructor(
+    private loginService: LoginService,
     private deedService: DeedService,
     private route: ActivatedRoute,
     private location: Location,
     private apollo: Apollo,
 
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
-    this.querySubscription = this.apollo.watchQuery<any>({
-      query: queryies
-    })
-      .valueChanges
-      .subscribe(({data, loading }) => {
-        this.loading = loading;
-        this.user = data.allUsers[0]
-      });
+    // this.querySubscription = this.apollo.watchQuery<any>({
+    //   query: queryies
+    // })
+    //   .valueChanges
+    //   .subscribe(({data, loading }) => {
+    //     this.loading = loading;
+    //     this.user = data.allUsers[0]
+    //   });
+    this.user = this.loginService.getUserInfo();
   }
 
 }

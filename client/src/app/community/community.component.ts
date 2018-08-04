@@ -87,29 +87,20 @@ export class CommunityComponent implements OnInit {
 
   status: boolean = false;
   status2: boolean = false;
-  // constructor(group, name, content, karma) {
-  //   this.group = group;
-  //   this.title = name;
-  //   this.content = content;
-  //   this.points = karma;
-  // }
 
-  showForm() {
+  showForm() { //toggles display of new Task
     if (this.status2) this.status2 = !this.status2
     this.status = !this.status;
-    console.log('work', this.status);
   }
 
-  showForm2() {
+  showForm2() { //toggles display of Prizes
     if (this.status) this.status = !this.status
     this.status2 = !this.status2;
-    console.log('work2',this.status2);
   }
 
   submit(title, content, points) {
     this.status = !this.status;
     this.apollo.mutate<any>({ mutation: createTask(title, content, points, this.group) }).subscribe();
-
     this.getData();
   }
 
@@ -119,8 +110,6 @@ export class CommunityComponent implements OnInit {
       .valueChanges.subscribe(({ data, loading }) => {
         this.loading = loading;
         let notYetCompleted = [];
-        console.log('before',data.allTasks);
-        console.log('after',notYetCompleted);
         for (let i = 0, k = 0; i < data.allTasks.length - k; i++) {
           if(data.allTasks[i].status !== "completed") notYetCompleted.push(data.allTasks[i]);
         }
