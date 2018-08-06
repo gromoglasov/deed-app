@@ -82,9 +82,10 @@ export class CommunityComponent implements OnInit {
   }
 
   showAddMenu() {
+    if (this.addTask) this.addMenu = this.addMenu;
+    else this.addMenu = !this.addMenu;
     if (this.addTask) this.addTask = !this.addTask;
     if (this.showPrizes) this.showPrizes = !this.showPrizes;
-    this.addMenu = !this.addMenu;
   }
 
 
