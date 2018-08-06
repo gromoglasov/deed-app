@@ -14,6 +14,11 @@ import { TaskComponent } from './task/task.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { MiniCommunityComponent } from './mini-community/mini-community.component';
 import { SignupComponent } from './signup/signup.component';
+import { AddTaskComponent } from './add-task/add-task.component';
+import { PrizesComponent } from './prizes/prizes.component';
+import { AddMenuComponent } from './add-menu/add-menu.component';
+import { AddUserComponent } from './add-user/add-user.component';
+import { AddPrizeComponent } from './add-prize/add-prize.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +28,12 @@ import { SignupComponent } from './signup/signup.component';
     ProfileComponent,
     TaskComponent,
     MiniCommunityComponent,
-    SignupComponent
+    SignupComponent,
+    AddTaskComponent,
+    PrizesComponent,
+    AddMenuComponent,
+    AddUserComponent,
+    AddPrizeComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +46,7 @@ import { SignupComponent } from './signup/signup.component';
   bootstrap: [AppComponent]
 })
 
-export class AppModule { 
+export class AppModule {
   constructor(
     apollo: Apollo,
     httpLink: HttpLink

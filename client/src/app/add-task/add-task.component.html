@@ -1,0 +1,16 @@
+<div class="section collapsible" [ngClass]="communityComponent.addTask ? 'show': 'collapsed'">
+  <div class="add-task">
+    <div class="task-input-container clearfix">
+      <p>
+        <i class="far fa-plus-square"></i>
+      </p>
+      <p>Name</p>
+      <input #name type="text" name="" value="">
+      <p>Description</p>
+      <input #content type="text" name="" value="">
+      <p>Karma</p>
+      <input #karma class="karma" type="number" name="" value="">
+      <button type="button" name="button" (click)="submit(name.value, content.value, karma.value)">SUBMIT</button>
+    </div>
+  </div>
+</div>

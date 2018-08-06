@@ -2,15 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { DeedService } from '../deed.service'
 import { Task } from '../task-class';
 import { Group } from '../group-class';
-
 import { ActivatedRoute } from '@angular/router';
-
+import { MenuService } from '../menu.service';
 import { Location } from '@angular/common';
 
 import { Apollo } from "apollo-angular";
 import gql from "graphql-tag";
 import { Subscription } from "apollo-client/util/Observable";
-
 
 
 function getquery (name){
@@ -51,24 +49,6 @@ function getqueryimage(group) {
     `;
 }
 
-function createTask(title, content, points, group) {
-  return gql`
-    mutation {
-      createTask(
-        group: "${group}"
-        title: "${title}"
-        content: "${content}"
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYj1pL1Z0wPCagDhG93HyaXFClCA-d5jwuRDspPoNMNRcvfdFn"
-        status: "To do"
-        points: ${points}
-      ) {
-        _id
-      }
-    }
-  `
-} ;
-
-
 @Component({
   selector: "app-community",
   templateUrl: "./community.component.html",
@@ -85,24 +65,54 @@ export class CommunityComponent implements OnInit {
 
   private querySubscription: Subscription;
 
-  status: boolean = false;
-  status2: boolean = false;
+  addTask: boolean = false;
+  showPrizes: boolean = false;
+  addMenu: boolean = false;
+  addUser: boolean = false;
+  addPrize: boolean = false;
 
-  showForm() { //toggles display of new Task
-    if (this.status2) this.status2 = !this.status2
-    this.status = !this.status;
+  showPrizesFunc() { //toggles display of Prizes
+    if (this.addTask) this.addTask = !this.addTask;
+    if (this.addMenu) this.addMenu = !this.addMenu;
+    if (this.addUser) this.addUser = !this.addUser;
+    if (this.addPrize) this.addPrize = !this.addPrize;
+    this.showPrizes = !this.showPrizes;
   }
 
-  showForm2() { //toggles display of Prizes
-    if (this.status) this.status = !this.status
-    this.status2 = !this.status2;
+  addTaskFunc() { //toggles display of new Task
+    if (this.showPrizes) this.showPrizes = !this.showPrizes;
+    if (this.addMenu) this.addMenu = !this.addMenu;
+    if (this.addUser) this.addUser = !this.addUser;
+    if (this.addPrize) this.addPrize = !this.addPrize;
+    this.addTask = !this.addTask;
   }
 
-  submit(title, content, points) {
-    this.status = !this.status;
-    this.apollo.mutate<any>({ mutation: createTask(title, content, points, this.group) }).subscribe();
-    this.getData();
+  showAddMenu() {
+    if (this.addTask || this.addUser || this.addPrize) this.addMenu = this.addMenu;
+    else this.addMenu = !this.addMenu;
+    if (this.addTask) this.addTask = !this.addTask;
+    if (this.showPrizes) this.showPrizes = !this.showPrizes;
+    if (this.addUser) this.addUser = !this.addUser;
+    if (this.addPrize) this.addPrize = !this.addPrize;
   }
+
+  showAddUser() {
+    if (this.addTask) this.addTask = !this.addTask;
+    if (this.showPrizes) this.showPrizes = !this.showPrizes;
+    if (this.addMenu) this.addMenu = !this.addMenu;
+    if (this.addPrize) this.addPrize = !this.addPrize;
+    this.addUser = !this.addUser;
+  }
+
+  showAddPrize() {
+    if (this.addTask) this.addTask = !this.addTask;
+    if (this.showPrizes) this.showPrizes = !this.showPrizes;
+    if (this.addMenu) this.addMenu = !this.addMenu;
+    if (this.addUser) this.addUser = !this.addUser;
+    this.addPrize = !this.addPrize;
+
+  }
+
 
   getData() {
     this.querySubscription = this.apollo
@@ -127,6 +137,7 @@ export class CommunityComponent implements OnInit {
   }
 
   constructor(
+    private menuService: MenuService,
     private deedService: DeedService,
     private route: ActivatedRoute,
     private location: Location,

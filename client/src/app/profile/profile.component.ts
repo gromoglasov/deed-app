@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user-class'
 import { DeedService } from '../deed.service';
-
+import { Router } from '@angular/router'
 import { ActivatedRoute } from '@angular/router';
 
 import { Location } from '@angular/common';
@@ -27,23 +27,6 @@ function createNewGroup (group, type, initKarma) {
 
 }
 
-const queryies = gql`
-  {
-    allUsers(userName: "isadorabk") {
-      firstName
-      userName
-      lastName
-      city
-      image
-      groups
-      karmas {
-        group
-        karmaPoint
-        image
-      }
-    }
-  }
-`;
 
 @Component({
   selector: 'app-profile',
@@ -93,8 +76,6 @@ updateKarma(user, group, karma) {
 }
 
 
-
-
   createGroup(group, type, initKarma) {
     this.status = !this.status;
     this.apollo.mutate<any>({ mutation: createNewGroup(group, type, initKarma) })
@@ -121,20 +102,14 @@ updateKarma(user, group, karma) {
     private route: ActivatedRoute,
     private location: Location,
     private apollo: Apollo,
-
+    private router:Router,
   ) {
   }
 
   ngOnInit() {
-    // this.querySubscription = this.apollo.watchQuery<any>({
-    //   query: queryies
-    // })
-    //   .valueChanges
-    //   .subscribe(({data, loading }) => {
-    //     this.loading = loading;
-    //     this.user = data.allUsers[0]
-    //   });
     this.user = this.loginService.getUserInfo();
+    if (this.user === undefined) this.router.navigateByUrl('/');
+
   }
 
 }

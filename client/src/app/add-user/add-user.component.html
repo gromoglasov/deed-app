@@ -1,0 +1,12 @@
+<div class="section collapsible" [ngClass]="communityComponent.addUser ? 'show': 'collapsed'">
+  <div class="add-user">
+    <div class="user-input-container clearfix">
+      <p>
+        <i class="far fa-plus-square"></i>
+      </p>
+      <p>Username</p>
+      <input #username type="text" name="" value="">
+      <button type="button" name="button" (click)="inviteUser(username.value)">Send Invite</button>
+    </div>
+  </div>
+</div>
