@@ -31,6 +31,7 @@ export class AddTaskComponent implements OnInit {
     this.apollo.mutate<any>({ mutation: createTask(title, content, points, this.communityComponent.group) }).subscribe();
     this.menuService.addTaskFunc();
     this.communityComponent.getData();
+    this.communityComponent.addTaskFunc();
   }
 
   constructor(
