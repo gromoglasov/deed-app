@@ -25,7 +25,7 @@ export class AddMenuComponent implements OnInit {
   }
 
   showAddPrizes() {
-
+    this.communityComponent.showAddPrize();
 
   }
 

@@ -69,11 +69,13 @@ export class CommunityComponent implements OnInit {
   showPrizes: boolean = false;
   addMenu: boolean = false;
   addUser: boolean = false;
+  addPrize: boolean = false;
 
   showPrizesFunc() { //toggles display of Prizes
     if (this.addTask) this.addTask = !this.addTask;
     if (this.addMenu) this.addMenu = !this.addMenu;
     if (this.addUser) this.addUser = !this.addUser;
+    if (this.addPrize) this.addPrize = !this.addPrize;
     this.showPrizes = !this.showPrizes;
   }
 
@@ -81,22 +83,34 @@ export class CommunityComponent implements OnInit {
     if (this.showPrizes) this.showPrizes = !this.showPrizes;
     if (this.addMenu) this.addMenu = !this.addMenu;
     if (this.addUser) this.addUser = !this.addUser;
+    if (this.addPrize) this.addPrize = !this.addPrize;
     this.addTask = !this.addTask;
   }
 
   showAddMenu() {
-    if (this.addTask) this.addMenu = this.addMenu;
+    if (this.addTask || this.addUser || this.addPrize) this.addMenu = this.addMenu;
     else this.addMenu = !this.addMenu;
     if (this.addTask) this.addTask = !this.addTask;
     if (this.showPrizes) this.showPrizes = !this.showPrizes;
     if (this.addUser) this.addUser = !this.addUser;
+    if (this.addPrize) this.addPrize = !this.addPrize;
   }
 
   showAddUser() {
     if (this.addTask) this.addTask = !this.addTask;
     if (this.showPrizes) this.showPrizes = !this.showPrizes;
     if (this.addMenu) this.addMenu = !this.addMenu;
+    if (this.addPrize) this.addPrize = !this.addPrize;
     this.addUser = !this.addUser;
+  }
+
+  showAddPrize() {
+    if (this.addTask) this.addTask = !this.addTask;
+    if (this.showPrizes) this.showPrizes = !this.showPrizes;
+    if (this.addMenu) this.addMenu = !this.addMenu;
+    if (this.addUser) this.addUser = !this.addUser;
+    this.addPrize = !this.addPrize;
+
   }
 
 

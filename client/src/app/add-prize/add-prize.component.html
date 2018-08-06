@@ -1,3 +1,16 @@
-<p>
-  add-prize works!
-</p>
+<div class="section collapsible" [ngClass]="communityComponent.addPrize ? 'show': 'collapsed'">
+  <div class="add-prize">
+    <div class="prize-input-container clearfix">
+      <p>
+        <i class="far fa-plus-square"></i>
+      </p>
+      <p>Name</p>
+      <input #name type="text" name="" value="">
+      <p>Description</p>
+      <input #description type="text" name="" value="">
+      <p>Karma</p>
+      <input #karma type="number" name="" value="">
+      <button type="button" name="button" (click)="addPrize(name.value, description.value, karma.value)">Send Invite</button>
+    </div>
+  </div>
+</div>
