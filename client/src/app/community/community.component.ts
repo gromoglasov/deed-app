@@ -2,15 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { DeedService } from '../deed.service'
 import { Task } from '../task-class';
 import { Group } from '../group-class';
-
 import { ActivatedRoute } from '@angular/router';
-
+import { MenuService } from '../menu.service';
 import { Location } from '@angular/common';
 
 import { Apollo } from "apollo-angular";
 import gql from "graphql-tag";
 import { Subscription } from "apollo-client/util/Observable";
-
 
 
 function getquery (name){
@@ -51,24 +49,6 @@ function getqueryimage(group) {
     `;
 }
 
-function createTask(title, content, points, group) {
-  return gql`
-    mutation {
-      createTask(
-        group: "${group}"
-        title: "${title}"
-        content: "${content}"
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYj1pL1Z0wPCagDhG93HyaXFClCA-d5jwuRDspPoNMNRcvfdFn"
-        status: "To do"
-        points: ${points}
-      ) {
-        _id
-      }
-    }
-  `
-} ;
-
-
 @Component({
   selector: "app-community",
   templateUrl: "./community.component.html",
@@ -85,24 +65,19 @@ export class CommunityComponent implements OnInit {
 
   private querySubscription: Subscription;
 
-  status: boolean = false;
+  // status: boolean = false;
   status2: boolean = false;
 
-  showForm() { //toggles display of new Task
-    if (this.status2) this.status2 = !this.status2
-    this.status = !this.status;
-  }
-
   showForm2() { //toggles display of Prizes
-    if (this.status) this.status = !this.status
+    if (this.menuService.addTask) this.menuService.addTask = !this.menuService.addTask
     this.status2 = !this.status2;
   }
 
-  submit(title, content, points) {
-    this.status = !this.status;
-    this.apollo.mutate<any>({ mutation: createTask(title, content, points, this.group) }).subscribe();
-    this.getData();
+  showForm() { //toggles display of new Task
+    this.menuService.addTaskFunc();
+    console.log(this.menuService.addTask);
   }
+
 
   getData() {
     this.querySubscription = this.apollo
@@ -127,6 +102,7 @@ export class CommunityComponent implements OnInit {
   }
 
   constructor(
+    private menuService: MenuService,
     private deedService: DeedService,
     private route: ActivatedRoute,
     private location: Location,
