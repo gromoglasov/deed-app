@@ -67,15 +67,24 @@ export class CommunityComponent implements OnInit {
 
   addTask: boolean = false;
   showPrizes: boolean = false;
+  addMenu: boolean = false;
 
   showPrizesFunc() { //toggles display of Prizes
-    if (this.addTask) this.addTask = !this.addTask
+    if (this.addTask) this.addTask = !this.addTask;
+    if (this.addMenu) this.addMenu = !this.addMenu;
     this.showPrizes = !this.showPrizes;
   }
 
   addTaskFunc() { //toggles display of new Task
-    if (this.showPrizes) this.showPrizes = !this.showPrizes
+    if (this.showPrizes) this.showPrizes = !this.showPrizes;
+    if (this.addMenu) this.addMenu = !this.addMenu;
     this.addTask = !this.addTask;
+  }
+
+  showAddMenu() {
+    if (this.addTask) this.addTask = !this.addTask;
+    if (this.showPrizes) this.showPrizes = !this.showPrizes;
+    this.addMenu = !this.addMenu;
   }
 
 

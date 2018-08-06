@@ -23,14 +23,14 @@
       <div class="button-icon">
         <i class="fas fa-chart-area"></i>
       </div>
-      <div class="button-icon" (click)="addTaskFunc()">
+      <div class="button-icon" (click)="showAddMenu()">
         <i class="fas fa-plus"></i>
       </div>
     </div>
   </div>
 
   <ul class="task-container clearfix">
-
+    <app-add-menu></app-add-menu>
     <app-add-task #actionPanel></app-add-task>
     <app-prizes #prizePanel></app-prizes>
 

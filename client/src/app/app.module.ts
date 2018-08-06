@@ -16,6 +16,7 @@ import { MiniCommunityComponent } from './mini-community/mini-community.componen
 import { SignupComponent } from './signup/signup.component';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { PrizesComponent } from './prizes/prizes.component';
+import { AddMenuComponent } from './add-menu/add-menu.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PrizesComponent } from './prizes/prizes.component';
     MiniCommunityComponent,
     SignupComponent,
     AddTaskComponent,
-    PrizesComponent
+    PrizesComponent,
+    AddMenuComponent
   ],
   imports: [
     BrowserModule,
