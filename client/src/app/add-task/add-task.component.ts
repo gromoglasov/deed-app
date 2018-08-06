@@ -27,13 +27,9 @@ function createTask(title, content, points, group) {
 })
 export class AddTaskComponent implements OnInit {
 
-  status: boolean = false;
-
   submit(title, content, points) {
-
     this.apollo.mutate<any>({ mutation: createTask(title, content, points, this.communityComponent.group) }).subscribe();
     this.menuService.addTaskFunc();
-    this.status = this.menuService.addTask;
     this.communityComponent.getData();
   }
 
@@ -45,11 +41,5 @@ export class AddTaskComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  toggle() {
-    this.status = !this.status;
-  }
-
-
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { CommunityComponent } from '../community/community.component';
 @Component({
   selector: 'app-prizes',
   templateUrl: './prizes.component.html',
@@ -7,15 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrizesComponent implements OnInit {
 
-  status: boolean = false;
-
-  constructor() { }
+  constructor(
+    private communityComponent: CommunityComponent,
+  ) { }
 
   ngOnInit() {
   }
 
-  toggle() {
-    this.status = !this.status;
-  }
 
 }

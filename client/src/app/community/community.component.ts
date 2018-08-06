@@ -65,17 +65,17 @@ export class CommunityComponent implements OnInit {
 
   private querySubscription: Subscription;
 
-  // status: boolean = false;
-  status2: boolean = false;
+  addTask: boolean = false;
+  showPrizes: boolean = false;
 
-  showForm2() { //toggles display of Prizes
-    if (this.menuService.addTask) this.menuService.addTask = !this.menuService.addTask
-    this.status2 = !this.status2;
+  showPrizesFunc() { //toggles display of Prizes
+    if (this.addTask) this.addTask = !this.addTask
+    this.showPrizes = !this.showPrizes;
   }
 
-  showForm() { //toggles display of new Task
-    this.menuService.addTaskFunc();
-    console.log(this.menuService.addTask);
+  addTaskFunc() { //toggles display of new Task
+    if (this.showPrizes) this.showPrizes = !this.showPrizes
+    this.addTask = !this.addTask;
   }
 
 
