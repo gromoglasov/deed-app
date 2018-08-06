@@ -17,6 +17,8 @@ import { SignupComponent } from './signup/signup.component';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { PrizesComponent } from './prizes/prizes.component';
 import { AddMenuComponent } from './add-menu/add-menu.component';
+import { AddUserComponent } from './add-user/add-user.component';
+import { AddPrizeComponent } from './add-prize/add-prize.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { AddMenuComponent } from './add-menu/add-menu.component';
     SignupComponent,
     AddTaskComponent,
     PrizesComponent,
-    AddMenuComponent
+    AddMenuComponent,
+    AddUserComponent,
+    AddPrizeComponent
   ],
   imports: [
     BrowserModule,

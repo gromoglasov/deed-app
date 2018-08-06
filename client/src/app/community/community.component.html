@@ -32,7 +32,9 @@
   <ul class="task-container clearfix">
     <app-add-menu></app-add-menu>
     <app-add-task #actionPanel></app-add-task>
+    <app-add-user></app-add-user>
     <app-prizes #prizePanel></app-prizes>
+
 
     <app-task *ngFor="let task of tasks" [task]='task'></app-task>
 

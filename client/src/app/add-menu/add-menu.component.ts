@@ -20,7 +20,7 @@ export class AddMenuComponent implements OnInit {
   }
 
   showAddUser() {
-
+    this.communityComponent.showAddUser();
 
   }
 
