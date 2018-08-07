@@ -19,6 +19,10 @@ import { PrizesComponent } from './prizes/prizes.component';
 import { AddMenuComponent } from './add-menu/add-menu.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { AddPrizeComponent } from './add-prize/add-prize.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { StatisticsComponent } from './statistics/statistics.component';
+import { SettingsComponent } from './settings/settings.component';
+import { PrizeComponent } from './prize/prize.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import { AddPrizeComponent } from './add-prize/add-prize.component';
     PrizesComponent,
     AddMenuComponent,
     AddUserComponent,
-    AddPrizeComponent
+    AddPrizeComponent,
+    LeaderboardComponent,
+    StatisticsComponent,
+    SettingsComponent,
+    PrizeComponent
   ],
   imports: [
     BrowserModule,

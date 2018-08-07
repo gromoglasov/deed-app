@@ -29,15 +29,15 @@
     </div>
   </div>
 
-  <ul class="task-container clearfix">
+  <ul class="main-container clearfix">
     <app-add-menu></app-add-menu>
-    <app-add-task #actionPanel></app-add-task>
+    <app-add-task></app-add-task>
     <app-add-user></app-add-user>
     <app-add-prize></app-add-prize>
-    <app-prizes #prizePanel></app-prizes>
+    <app-prizes  [prizes]='prizes'></app-prizes>
 
-
+  <ul class="section collapsible" [ngClass]="this.taskBool ? 'show': 'collapsed'">
     <app-task *ngFor="let task of tasks" [task]='task'></app-task>
-
+  </ul>
   </ul>
 </div>

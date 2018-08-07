@@ -108,6 +108,7 @@ updateKarma(user, group, karma) {
 
   ngOnInit() {
     this.user = this.loginService.getUserInfo();
+    console.log(this.user);
     if (this.user === undefined) this.router.navigateByUrl('/');
 
   }

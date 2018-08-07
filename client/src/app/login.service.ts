@@ -31,7 +31,6 @@ export class LoginService {
 
    private user;
    loading: boolean;
-
    // fetch the user data and display it
 
    private querySubscription: Subscription;
@@ -43,13 +42,11 @@ export class LoginService {
      })
        .valueChanges
        .subscribe(({data, loading }) => {
-         console.log(data);
          this.loading = loading;
          this.user = data.allUsers[0];
          this.router.navigateByUrl('/profile');
          console.log(this.user);
        });
-
    }
 
    getUserInfo () {
