@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Task } from '../task-class';
 import { ActivatedRoute } from '@angular/router';
-
+import { CommunityComponent } from '../community/community.component';
 import { Location } from '@angular/common';
 import { Apollo } from "apollo-angular";
 import gql from "graphql-tag";
@@ -62,7 +62,8 @@ export class TaskComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private location: Location,
-    private apollo: Apollo
+    private apollo: Apollo,
+    private communityComponent: CommunityComponent,
   ) {
     this.task = this.route.snapshot.params.task;
   }
@@ -77,10 +78,12 @@ export class TaskComponent implements OnInit {
 
 
 
-  completeTask(){
-    this.status = !this.status;
+  completeTask() {
+    // this.status = !this.status;
+    let index = 0;
+    for(; index<this.communityComponent.tasks.length; index++) if (this._id == this.communityComponent.tasks[index]._id) break;
+    this.communityComponent.removeTask(index);
     this.apollo.mutate<any>({ mutation: changeTaskStatus(this.task._id) }).subscribe();
-    window.location.reload();
     console.log("clicked")
   }
 
