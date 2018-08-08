@@ -34,9 +34,9 @@
     <app-add-task></app-add-task>
     <app-add-user></app-add-user>
     <app-add-prize></app-add-prize>
-    <app-prizes  [prizes]='prizes'></app-prizes>
+    <app-prizes [prizes]='prizes'></app-prizes>
 
-  <ul class="section collapsible" [ngClass]="this.taskBool ? 'show': 'collapsed'">
+  <ul class="section collapsible tasks" [ngClass]="this.taskBool ? 'show': 'collapsed'">
     <app-task *ngFor="let task of tasks" [task]='task'></app-task>
   </ul>
   </ul>

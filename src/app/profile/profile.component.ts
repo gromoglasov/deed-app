@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user-class'
-import { DeedService } from '../deed.service';
 import { Router } from '@angular/router'
 import { ActivatedRoute } from '@angular/router';
 
@@ -98,7 +97,6 @@ updateKarma(user, group, karma) {
 
   constructor(
     private loginService: LoginService,
-    private deedService: DeedService,
     private route: ActivatedRoute,
     private location: Location,
     private apollo: Apollo,
@@ -107,10 +105,10 @@ updateKarma(user, group, karma) {
   }
 
   ngOnInit() {
-    this.user = this.loginService.getUserInfo();
-    console.log(this.user);
+    this.loginService.refetcher();
+    if(this.user != this.loginService.getUserInfo()) this.user = this.loginService.getUserInfo();
+    console.log('profile reinitiated');
     if (this.user === undefined) this.router.navigateByUrl('/');
-
   }
 
 }

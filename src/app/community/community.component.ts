@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DeedService } from '../deed.service'
 import { Task } from '../task-class';
 import { Group } from '../group-class';
 import { Router } from '@angular/router';
@@ -83,7 +82,7 @@ export class CommunityComponent implements OnInit {
   taskBool: boolean = true;
   queryWatcher: any;
   queryWatcher2: any;
-
+  counter: number = 1;
 
   showPrizesFunc() { //toggles display of Prizes
     this.queryWatcher2.refetch();
@@ -186,9 +185,16 @@ export class CommunityComponent implements OnInit {
     this.querySubscription2.unsubscribe();
   }
 
+  changeUserPoints(index) {
+    // console.log(this.user.karmas[0].karmaPoint);
+    if (this.user != this.loginService.getUserInfo()) {
+    this.user = this.loginService.getUserInfo();
+    this.counter--;
+    }
+  }
+
   constructor(
     private menuService: MenuService,
-    private deedService: DeedService,
     private loginService: LoginService,
     private route: ActivatedRoute,
     private router: Router,

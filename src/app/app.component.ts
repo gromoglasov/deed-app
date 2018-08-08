@@ -10,8 +10,7 @@ import gql from 'graphql-tag';
 })
 export class AppComponent {
   constructor(apollo: Apollo) {
-    apollo.query({query:
-    gql`{allUsers{userName}}`}).subscribe(console.log);
+
   }
   title = 'app';
 }
