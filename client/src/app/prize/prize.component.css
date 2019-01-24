@@ -1,4 +1,4 @@
-.group {
+.prize {
   float: left;
   height: 100px;
   width: 100%;
@@ -7,13 +7,13 @@
   margin-bottom: 5px;
 }
 
-.group-image {
+.prize-image {
   width: 25%;
   height: 100px;
   float: left;
   position: relative;
 }
-.group-image img {
+.prize-image img {
   height: 70px;
   width: 70px;
   position: absolute;
@@ -25,14 +25,14 @@
   object-position: center right;
 }
 
-.group-name {
+.prize-name {
   float: left;
   width: 50%;
   height: 100px;
   position: relative;
 }
 
-.group-name p {
+.prize-name p {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -42,13 +42,13 @@
   font-weight:200;
 }
 
-.container-group-icon {
+.container-prize-icon {
   float: left;
   width: 25%;
   height: 100px;
 }
 
-.container-group-icon p {
+.container-prize-icon p {
   width: 100%;
   float: left;
   font-size: 14px;
@@ -57,7 +57,7 @@
 	padding-top: 15px;
 	font-family: 'Montserrat', sans-serif;
 }
-.container-group-icon span {
+.container-prize-icon span {
 	font-weight: 400;
 	font-size: 25px;
 	padding-right: 10px;

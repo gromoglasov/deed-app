@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApolloModule, Apollo } from 'apollo-angular';
 import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-
+import { setContext } from 'apollo-link-context';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { CommunityComponent } from './community/community.component';
@@ -19,6 +19,10 @@ import { PrizesComponent } from './prizes/prizes.component';
 import { AddMenuComponent } from './add-menu/add-menu.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { AddPrizeComponent } from './add-prize/add-prize.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { StatisticsComponent } from './statistics/statistics.component';
+import { SettingsComponent } from './settings/settings.component';
+import { PrizeComponent } from './prize/prize.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import { AddPrizeComponent } from './add-prize/add-prize.component';
     PrizesComponent,
     AddMenuComponent,
     AddUserComponent,
-    AddPrizeComponent
+    AddPrizeComponent,
+    LeaderboardComponent,
+    StatisticsComponent,
+    SettingsComponent,
+    PrizeComponent
   ],
   imports: [
     BrowserModule,
@@ -47,13 +55,11 @@ import { AddPrizeComponent } from './add-prize/add-prize.component';
 })
 
 export class AppModule {
-  constructor(
-    apollo: Apollo,
-    httpLink: HttpLink
-  ) {
-    apollo.create({
-      link: httpLink.create({ uri: 'http://localhost:3000/graphql'}),
-      cache: new InMemoryCache()
-    })
+
+
+
+  constructor() {
+
   }
+
 }

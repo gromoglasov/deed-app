@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const { graphiqlExpress, graphqlExpress } = require('apollo-server-express');
 const { makeExecutableSchema } = require('graphql-tools');
 const mongoose = require('mongoose');
+const authMiddleware = require('./middlewares/authorization');
 const cors = require('cors');
 const typeDefs = require('./schema');
 const resolvers = require('./resolvers');
@@ -18,6 +19,7 @@ const User = mongoose.model('User', {
   firstName: String,
   lastName: String,
   password: String,
+  token: String,
   image: String,
   email: String,
   city: String,
@@ -45,6 +47,7 @@ const Group = mongoose.model('Group', {
   icon: String,
   coverPhoto: String,
   prizes: [{
+    name: String,
     image: String,
     desc: String,
     points: Number
@@ -74,7 +77,7 @@ app.use(express.static('./client'));
 app.use(bodyParser.json());
 
 
-app.use('/graphql', bodyParser.json(), graphqlExpress({ schema, context: { User, Group, Task } }));
+app.use('/graphql', bodyParser.json(), authMiddleware, graphqlExpress({ schema, context: { User, Group, Task } }));
 app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 
 app.listen(PORT);
