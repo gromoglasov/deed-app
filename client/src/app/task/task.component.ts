@@ -99,11 +99,10 @@ export class TaskComponent implements OnInit {
     for (; kindex < this.communityComponent.user.karmas.length; kindex++) if (this.communityComponent.user.karmas[kindex].group == this.group) break;
     let userPoints = this.communityComponent.user.karmas[kindex].karmaPoint + this.points;
     this.apollo.mutate<any>({ mutation: deductKarma(this.communityComponent.user.userName, this.group, userPoints, this.communityComponent.groupImage) }).subscribe();
-
     let index = 0;
     for(; index<this.communityComponent.tasks.length; index++) if (this._id == this.communityComponent.tasks[index]._id) break;
-    this.communityComponent.removeTask(index);
     this.apollo.mutate<any>({ mutation: changeTaskStatus(this.task._id) }).subscribe();
+    this.communityComponent.removeTask(index);
   }
 
   ngOnInit() {

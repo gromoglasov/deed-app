@@ -62,7 +62,7 @@ function getqueryimage(group) {
 })
 export class CommunityComponent implements OnInit {
   goBack(): void {
-    this.location.back();
+    this.router.navigateByUrl('/profile');
   }
   group: string;
   tasks: Task[];
@@ -150,6 +150,7 @@ export class CommunityComponent implements OnInit {
           if(data.allTasks[i].status !== "completed") notYetCompleted.push(data.allTasks[i]);
         }
         this.tasks = notYetCompleted;
+        console.log(this.tasks.length);
       });
   }
 
@@ -160,16 +161,15 @@ export class CommunityComponent implements OnInit {
       .valueChanges
       .subscribe(({ data, loading }) => {
         this.loading = loading;
-        console.log(data);
+        console.log(this.tasks);
         this.prizes = data.allGroups[0].prizes;
         this.groupImage = data.allGroups[0].icon;
-        console.log('prizes', this.prizes);
-        console.log('groupImage', this.groupImage)
       })
   }
 
   removeTask (index) {
-    this.tasks.splice(index, 1);
+    // this.tasks.splice(index, 1);
+    this.queryWatcher.refetch();
   }
 
   taskAdded (task) {
@@ -205,10 +205,12 @@ export class CommunityComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('init!');
-    this.getTasks();
-    this.getGroupInfo();
+    if (this.tasks === undefined) {
+      this.getTasks();
+      this.getGroupInfo();
+    }
     this.user = this.loginService.getUserInfo();
-    if (this.user === undefined) this.router.navigateByUrl('/');
+    if (this.user === undefined || this.apollo === undefined)  this.router.navigateByUrl('/');
   }
+
 }

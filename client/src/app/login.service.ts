@@ -19,12 +19,14 @@ export class LoginService {
    getUserData(username) {
      return gql`
       {
-        allUsers(userName: "${username}") {
+        myUser(userName: "${username}") {
           firstName
           userName
+          token
           lastName
           city
           image
+          token
           groups
           karmas {
             group
@@ -45,11 +47,6 @@ export class LoginService {
    private _ : any;
 
    loginUser (username) {
-     if (this._) {
-       console.log('equal', this._ === this.apollo.getClient().link);
-     }
-     this._ = this.apollo.getClient().link;
-     console.log(this._.request)
 
      this.queryWatcher = this.apollo.watchQuery<any>({
        query: this.getUserData(username)
@@ -60,7 +57,8 @@ export class LoginService {
 
          console.log(data);
          this.loading = loading;
-         this.user = data.allUsers[0];
+         this.user = data.myUser;
+         if (data.myUser.token) localStorage.setItem('token', data.myUser.token);
          if (this.user && this.router.url === '/') this.router.navigateByUrl('/profile');
          // console.log(this.user);
        });
