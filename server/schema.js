@@ -5,6 +5,7 @@ type User {
     firstName: String!
     lastName: String!
     password: String!
+    token: String
     image: String
     email: String!
     city: String!
@@ -79,19 +80,22 @@ input KarmaInput {
 }
 
 input PrizeInput {
+  name: String!
   image: String
   desc: String!
-    points: Int!
+  points: Int!
 }
 
 type Prize {
+  name: String!
   image: String
   desc: String!
-    points: Int!
+  points: Int!
 }
 
 type Query {
   allUsers(userName: String): [User!] !
+  myUser(userName: String): User!
   allGroups(name: String): [Group!] !
   allTasks(group: String): [Task!] !
 }
@@ -103,6 +107,7 @@ type Mutation {
     firstName: String!
     lastName: String!
     password: String!
+    token: String!
     image: String
     email: String!
     city: String!

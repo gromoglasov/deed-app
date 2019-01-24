@@ -13,6 +13,7 @@ function createUser(username, firstname, lastname, city, email, password) {
         password: "${password}"
         email: "${email}"
         city: "${city}"
+        image: "https://image.flaticon.com/icons/png/512/149/149071.png"
       ) {
         _id
       }

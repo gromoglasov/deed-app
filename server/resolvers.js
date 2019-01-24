@@ -1,3 +1,5 @@
+const jwt = require('jsonwebtoken');
+
 module.exports = {
   Query: {
     allGroups: async (parent, args, { Group }) => {
@@ -23,11 +25,30 @@ module.exports = {
           return x;
         });
       } else {
-        const users = await User.find({userName: args.userName});
+        let users = await User.find({userName: args.userName});
+        
+        console.log(users);
         return users.map((x) => {
           x._id = x._id.toString();
           return x;
         });
+      }
+    },
+    myUser: async (parent, args, ctx) => {
+      console.log('ctx', ctx);
+      const { User } = ctx;
+      if (!args.userName) {
+        const users = await User.find();
+        return users.map((x) => {
+          x._id = x._id.toString();
+          return x;
+        });
+      } else {
+        const user = await User.findOne({userName: args.userName});
+        const token = jwt.sign({ _id: `${args.userName}` }, 'THE MYSTERY KEY');
+        if (!user.token) user.token = token;
+
+        return user
       }
     },
     allTasks: async (parent, args, { Task }) => {
@@ -132,6 +153,7 @@ module.exports = {
       let group = await Group.find({name: args.name});
       let prizeArr = group[0].prizes;
       prizeArr.push({
+        name: args.input.name,
         image: args.input.image,
         desc: args.input.desc,
         points: args.input.points

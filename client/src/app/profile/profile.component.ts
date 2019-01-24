@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user-class'
-import { DeedService } from '../deed.service';
-
+import { Router } from '@angular/router'
 import { ActivatedRoute } from '@angular/router';
 
 import { Location } from '@angular/common';
@@ -9,6 +8,7 @@ import { Location } from '@angular/common';
 import { Apollo } from "apollo-angular";
 import gql from 'graphql-tag';
 import { Subscription } from 'apollo-client/util/Observable';
+import { LoginService } from '../login.service';
 
 function createNewGroup (group, type, initKarma) {
   return gql`
@@ -26,23 +26,6 @@ function createNewGroup (group, type, initKarma) {
 
 }
 
-const queryies = gql`
-  {
-    allUsers(userName: "isadorabk") {
-      firstName
-      userName
-      lastName
-      city
-      image
-      groups
-      karmas {
-        group
-        karmaPoint
-        image
-      }
-    }
-  }
-`;
 
 @Component({
   selector: 'app-profile',
@@ -57,7 +40,6 @@ export class ProfileComponent implements OnInit {
   }
 
   status: boolean = false;
-
   showForm() {
     this.status = !this.status;
   }
@@ -93,8 +75,6 @@ updateKarma(user, group, karma) {
 }
 
 
-
-
   createGroup(group, type, initKarma) {
     this.status = !this.status;
     this.apollo.mutate<any>({ mutation: createNewGroup(group, type, initKarma) })
@@ -116,22 +96,19 @@ updateKarma(user, group, karma) {
   private querySubscription: Subscription;
 
   constructor(
-    private deedService: DeedService,
+    private loginService: LoginService,
     private route: ActivatedRoute,
     private location: Location,
     private apollo: Apollo,
-
-  ) { }
+    private router:Router,
+  ) {
+  }
 
   ngOnInit() {
-    this.querySubscription = this.apollo.watchQuery<any>({
-      query: queryies
-    })
-      .valueChanges
-      .subscribe(({data, loading }) => {
-        this.loading = loading;
-        this.user = data.allUsers[0]
-      });
+    this.loginService.refetcher();
+    if(this.user != this.loginService.getUserInfo()) this.user = this.loginService.getUserInfo();
+    console.log('profile reinitiated');
+    if (this.user === undefined) this.router.navigateByUrl('/');
   }
 
 }

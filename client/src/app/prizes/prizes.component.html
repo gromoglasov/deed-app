@@ -1,0 +1,5 @@
+<div class="section2 collapsible" [ngClass]="communityComponent.showPrizes ? 'show': 'collapsed'">
+  <div class="trophy">
+    <app-prize *ngFor="let prize of prizes" [prize]='prize'></app-prize>
+  </div>
+</div>
